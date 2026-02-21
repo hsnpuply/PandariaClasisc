@@ -1,0 +1,2 @@
+# PandariaClasisc
+WoW Classic Expansion
