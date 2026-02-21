@@ -1,11 +1,11 @@
 <template>
-  <main class="app-shell">
+  <main class="app-shell bg-gray-700 ">
     <RouterView />
   </main>
 </template>
 
 <style scoped>
 .app-shell {
-  min-height: 100dvh;
+  min-height: 90vh;
 }
 </style>
