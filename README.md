@@ -1,2 +1,2 @@
 # PandariaClasisc
-WoW Classic Expansion
+WoW Classic Expansion.
