@@ -92,20 +92,66 @@ const state = reactive({
         </svg>
       </div>
       <!-- List of navigations -->
-      <ul class="flex items-center gap-3 ms-4 flex-1 bg-blue-200">
+      <ul class="flex items-center gap-3 ms-4 flex-1">
         <li
           v-for="(item, index) in state.menuItems"
           class="px-4 py-3 cursor-pointer hover:bg-[#ffffff0d] rounded-[8px]"
         >
           <span class="text-white text-xl">{{ item }}</span>
         </li>
-        <li class="px-4 py-1 cursor-pointer font-semibold bg-[#ffffff0d] hover:bg-[#ffffff1a] rounded-[8px]">
+        <li
+          class="px-4 py-1 cursor-pointer font-semibold bg-[#ffffff0d] hover:bg-[#ffffff1a] rounded-[8px]"
+        >
           <p class="text-white text-2xl !pb-3">...</p>
         </li>
       </ul>
-      <div class="secondary-menu">
-        <div class="account-logo hover:bg-[#ffffff0d] flex items-center gap-1">
-            hover:bg-[#ffffff0d]
+      <div class="secondary-menu flex items-center gap-2 px-6">
+        <div
+          class="account-logo cursor-pointer min-h-[52px] hover:bg-[#ffffff0d] flex items-center gap-1 px-3 rounded-[8px]"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            fill="none"
+            stroke="#ffffff80"
+            viewBox="0 0 24 24"
+            part="icon"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2M16 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0"
+            ></path>
+          </svg>
+          <span class="text-white text-base">Account</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            fill="none"
+            stroke="#666"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            part="icon"
+            aria-hidden="true"
+          >
+            <path d="m6 9 6 6 6-6"></path>
+          </svg>
+        </div>
+        <div class="sub">
+          <button class="cursor-pointer min-h-[52px] min-w-[129px] bg-[#21ae7a] hover:bg-[#2CD196] rounded-[8px] text-[#000] text-base font-semibold">
+            Subscribe
+          </button>
+        </div>
+        <div class="shop">
+          <button class="cursor-pointer min-h-[52px] min-w-[163px] bg-[#eb9110] hover:bg-[#F7B90A] rounded-[8px] text-[#000] text-base font-semibold">
+            Shop Upgrades
+          </button>
         </div>
       </div>
     </div>
