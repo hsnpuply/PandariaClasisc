@@ -7,7 +7,7 @@ const state = reactive({
 </script>
 <template>
   <header
-    class="bg-[#1f4639] max-w-[1800px] mx-auto mt-4 min-h-[72px] rounded-[8px] sticky top-4"
+    class="bg-[#1f4639] max-w-[1800px] mx-auto min-h-[72px] rounded-[8px] sticky top-4 z-[99999]"
   >
     <div class="flex items-center">
       <div class="corpration-logo">
@@ -106,50 +106,242 @@ const state = reactive({
         </li>
       </ul>
       <div class="secondary-menu flex items-center gap-2 px-6">
-        <div
-          class="account-logo cursor-pointer min-h-[52px] hover:bg-[#ffffff0d] flex items-center gap-1 px-3 rounded-[8px]"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            fill="none"
-            stroke="#ffffff80"
-            viewBox="0 0 24 24"
-            part="icon"
-            aria-hidden="true"
+        <div class="account-menu relative group/account pb-2">
+          <button
+            type="button"
+            class="account-logo cursor-pointer min-h-[52px] hover:bg-[#ffffff0d] flex items-center gap-1 px-3 rounded-[8px] transition-colors"
           >
-            <path
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              fill="none"
+              stroke="#ffffff80"
+              viewBox="0 0 24 24"
+              part="icon"
+              aria-hidden="true"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2M16 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0"
+              ></path>
+            </svg>
+            <span class="text-white text-base font-semibold">Account</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              fill="none"
+              stroke="#90999A"
               stroke-linecap="round"
               stroke-linejoin="round"
               stroke-width="2"
-              d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2M16 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0"
-            ></path>
-          </svg>
-          <span class="text-white text-base">Account</span>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            fill="none"
-            stroke="#666"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            viewBox="0 0 24 24"
-            part="icon"
-            aria-hidden="true"
+              viewBox="0 0 24 24"
+              part="icon"
+              aria-hidden="true"
+              class="transition-transform duration-200 group-hover/account:rotate-180 group-focus-within/account:rotate-180"
+            >
+              <path d="m6 9 6 6 6-6"></path>
+            </svg>
+          </button>
+
+          <div
+            class="subMenuCard pointer-events-none absolute right-[-90px] top-full z-50 w-[320px] overflow-visible rounded-[8px] border border-[#ffffff14] bg-[#114133] opacity-0 translate-y-2 shadow-[0_18px_40px_rgba(0,0,0,0.45)] transition-all duration-200 group-hover/account:pointer-events-auto group-hover/account:opacity-100 group-hover/account:translate-y-0 group-focus-within/account:pointer-events-auto group-focus-within/account:opacity-100 group-focus-within/account:translate-y-0"
           >
-            <path d="m6 9 6 6 6-6"></path>
-          </svg>
+            <div class="p-5">
+              <button
+                type="button"
+                class="w-full flex items-center cursor-pointer justify-center gap-2 min-h-[48px] rounded-[8px] bg-[#1679d0] text-white text-base font-semibold hover:bg-[#1f88df] transition-colors"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="#fff"
+                  stroke="#fff"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="0"
+                  aria-labelledby="blz-icon-title-battlenet"
+                  viewBox="0 0 48 48"
+                  part="icon"
+                  class="w-6 h-6"
+                >
+                  <title id="blz-icon-title-battlenet">Battle.net</title>
+                  <path
+                    stroke="none"
+                    d="M38.016 18.29c1.23-3.787 1.462-7.242.623-9.859l-.024-.073c-.05-.142-.175-.442-.334-.442-.12 0-.122.201-.115.303l.007.059c.267 2.337-.448 5.671-1.884 9.162-2.947-1.338-6.487-2.407-10.413-3.037-3.529-.567-6.906-.692-9.97-.442.364-2.41 1.264-4.086 2.74-4.44 2.033-.486 4.25.851 6.364 3.284q.547.075 1.097.163 1.564.25 3.072.596c-3.854-7.249-9.023-11.312-12.954-9.812-2.992 1.14-4.52 5.256-4.338 10.788-3.896.829-7.003 2.355-8.85 4.39l-.051.057c-.098.115-.296.373-.216.51.06.105.235.006.32-.051l.047-.036c1.89-1.4 5.135-2.448 8.877-2.949.315 3.22 1.16 6.82 2.576 10.536 1.274 3.34 2.854 6.327 4.603 8.855-2.27.89-4.17.948-5.215-.154-1.438-1.516-1.39-4.104-.339-7.152q-.21-.51-.408-1.032a48 48 0 0 1-1.019-2.957c-4.352 6.962-5.285 13.47-2.021 16.125 2.483 2.02 6.812 1.286 11.512-1.638 2.666 2.96 5.541 4.888 8.227 5.47l.075.016c.148.027.47.069.55-.069.06-.104-.113-.206-.205-.251l-.054-.023c-2.158-.937-4.688-3.223-6.993-6.213 2.632-1.883 5.327-4.414 7.836-7.499 2.256-2.773 4.053-5.635 5.368-8.414 1.905 1.52 2.906 3.138 2.474 4.594-.594 2.003-2.86 3.255-6.024 3.869q-.339.436-.69.869-1 1.23-2.052 2.361c8.205.288 14.307-2.158 14.975-6.312.508-3.16-2.293-6.543-7.174-9.151m-7.127 8.286c-2.893 3.557-6.5 6.586-9.707 8.337a36.3 36.3 0 0 1-3.091-6.183c-1.634-4.285-2.454-8.922-2.366-12.575 2.28-.076 4.635.05 6.9.414 4.527.727 8.953 2.336 12.073 4.239a36.3 36.3 0 0 1-3.809 5.768"
+                  ></path>
+                </svg>
+                Log In
+              </button>
+
+              <ul class="mt-5 space-y-1">
+                <li>
+                  <a
+                    href="#"
+                    class="flex items-center gap-3 rounded-[8px] px-2 py-2 text-white/95 text-base hover:bg-[#ffffff0f] transition-colors"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      stroke="#ffffff80"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      viewBox="0 0 24 24"
+                      part="icon"
+                      aria-hidden="true"
+                      class="w-6 h-6"
+                    >
+                      <path
+                        d="M18 19.75v-1.5a3 3 0 0 0-3-3H9a3 3 0 0 0-3 3v1.5M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10m-7-2.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0"
+                      ></path>
+                    </svg>
+                    <span>WoW Characters</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="flex items-center gap-3 rounded-[8px] px-2 py-2 text-white/95 text-base hover:bg-[#ffffff0f] transition-colors"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      fill="none"
+                      stroke="#93a79d"
+                      stroke-width="2"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="m12 14 4-2.3V7.1L12 4.8 8 7.1v4.6L12 14Zm0 0v4m4-2.2-4 2.3-4-2.3"
+                      ></path>
+                    </svg>
+                    <span>Account Settings</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="flex items-center gap-3 rounded-[8px] px-2 py-2 text-white/95 text-base hover:bg-[#ffffff0f] transition-colors"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      fill="none"
+                      stroke="#93a79d"
+                      stroke-width="2"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M12 5H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6m-8 2 9-9m0 0h-4m4 0v4"
+                      ></path>
+                    </svg>
+                    <span>Sign Up</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="border-t border-[#ffffff12] bg-[#0a3328] p-5">
+              <ul class="space-y-1">
+                <li>
+                  <a
+                    href="#"
+                    class="flex items-center gap-3 rounded-[8px] px-2 py-2 text-white/95 text-base hover:bg-[#ffffff0f] transition-colors"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      fill="none"
+                      stroke="#93a79d"
+                      stroke-width="2"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                    >
+                      <circle cx="12" cy="12" r="9"></circle>
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M12 8h.01M11 12h1v4h1"
+                      ></path>
+                    </svg>
+                    <span>Support</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="flex items-center gap-3 rounded-[8px] px-2 py-2 text-white/95 text-base hover:bg-[#ffffff0f] transition-colors"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      fill="none"
+                      stroke="#93a79d"
+                      stroke-width="2"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M6 7h12l-1 12H7L6 7Zm3 0V5a3 3 0 1 1 6 0v2"
+                      ></path>
+                    </svg>
+                    <span>Shop</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="flex items-center gap-3 rounded-[8px] px-2 py-2 text-white/95 text-base hover:bg-[#ffffff0f] transition-colors"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      fill="none"
+                      stroke="#93a79d"
+                      stroke-width="2"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"
+                      ></path>
+                    </svg>
+                    <span>Download Battle.net</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
         <div class="sub">
-          <button class="cursor-pointer min-h-[52px] min-w-[129px] bg-[#21ae7a] hover:bg-[#2CD196] rounded-[8px] text-[#000] text-base font-semibold">
+          <button
+            class="cursor-pointer min-h-[52px] min-w-[129px] bg-[#21ae7a] hover:bg-[#2CD196] rounded-[8px] text-[#000] text-base font-semibold"
+          >
             Subscribe
           </button>
         </div>
         <div class="shop">
-          <button class="cursor-pointer min-h-[52px] min-w-[163px] bg-[#eb9110] hover:bg-[#F7B90A] rounded-[8px] text-[#000] text-base font-semibold">
+          <button
+            class="cursor-pointer min-h-[52px] min-w-[163px] bg-[#eb9110] hover:bg-[#F7B90A] rounded-[8px] text-[#000] text-base font-semibold"
+          >
             Shop Upgrades
           </button>
         </div>
@@ -157,4 +349,30 @@ const state = reactive({
     </div>
   </header>
 </template>
-<style scoped></style>
+<style scoped>
+.subMenuCard::before {
+  content: "";
+  position: absolute;
+  top: -11px;
+  left: 50%;
+  width: 0;
+  height: 0;
+  transform: translateX(-50%);
+  border-left: 11px solid transparent;
+  border-right: 11px solid transparent;
+  border-bottom: 11px solid #ffffff14;
+}
+
+.subMenuCard::after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  width: 0;
+  height: 0;
+  transform: translateX(-50%);
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid #114133;
+}
+</style>
