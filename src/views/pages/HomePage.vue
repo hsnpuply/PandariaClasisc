@@ -3,6 +3,7 @@ import { computed } from "vue";
 import { useAppController } from "@/controllers/ui/useAppController";
 import Header from "../components/common/header.vue";
 import HeroSection from "../components/home/HeroSection.vue";
+import Features from "../components/features/features.vue";
 const { state } = useAppController();
 const title = computed(() => state.title);
 </script>
@@ -10,6 +11,8 @@ const title = computed(() => state.title);
   <section class="hero_section">
     <Header />  
     <HeroSection />
+    <div class="divider w-full" ></div>
+    <Features />
   </section>
   <!-- <section class="home-page"></section> -->
 </template>
@@ -29,5 +32,10 @@ h1 {
 .hero_section {
   min-height: 100vh;
   background: linear-gradient(180deg, #08271d 0%, #03170f 40%, #020d08 100%);
+}
+.divider{
+  background-image: url(../../assets/images/dividers_3.webp);
+  background-repeat: repeat-x;
+  height: 26px;
 }
 </style>
