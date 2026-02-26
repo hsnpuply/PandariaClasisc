@@ -139,7 +139,7 @@ const heroicLimit = Math.ceil(featureRows.length / 2);
         </tbody>
       </table>
       <!-- comment -->
-       <div class="pn mx-auto max-w-[1400px] mt-20 text-[#00000080]">
+       <div class="pn">
         <p> 
           ¹ Merriment pet, Sha-Warped Tea Set toy, Sha-Warped Cloud Serpent, Sha-Warped Riding Tiger, and Ensemble: Sha-Warped Collection are immediately available on modern World of Warcraft® realms.
         </p>
@@ -166,7 +166,7 @@ const heroicLimit = Math.ceil(featureRows.length / 2);
   background-image: url(../../../assets/images/2600_ComparisonTable.avif);
   background-size: cover;
   background-position: center;
-  padding: 40px 150px;
+  padding: clamp(2rem, 4vw, 2.5rem) clamp(1rem, 5vw, 9.5rem);
 }
 
 .compare-desc {
@@ -194,6 +194,14 @@ const heroicLimit = Math.ceil(featureRows.length / 2);
   font-size: clamp(1rem, 1.5vw, 1.25rem);
   line-height: 1.5;
   color: #000;
+}
+
+.pn {
+  max-width: 1400px;
+  margin: 5rem auto 0;
+  color: #000000a6;
+  font-size: clamp(0.9rem, 1.4vw, 1rem);
+  line-height: 1.6;
 }
 
 .table-wrap {
@@ -366,6 +374,10 @@ const heroicLimit = Math.ceil(featureRows.length / 2);
 }
 
 @media (max-width: 900px) {
+  .pn {
+    margin-top: 2.2rem;
+  }
+
   .compareTable {
     padding: 56px 14px 80px;
   }
