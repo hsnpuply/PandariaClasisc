@@ -7,6 +7,7 @@ import Features from "../components/features/features.vue";
 import CompareTable from "../components/compareTable/compareTable.vue"
 import Faq from "../components/faq/faq.vue";
 import Other from "../components/other-interests/other.vue";
+import Footer from "../components/footer/footer.vue"
 const { state } = useAppController();
 const title = computed(() => state.title);
 </script>
@@ -20,6 +21,8 @@ const title = computed(() => state.title);
     <CompareTable />
     <Faq/>
     <Other/>
+    <div class="divider w-full" ></div>
+    <Footer/>
   </section>
   <!-- <section class="home-page"></section> -->
 </template>
