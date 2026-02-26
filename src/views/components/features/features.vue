@@ -95,10 +95,10 @@ function toggle(i) {
         in its lush forests, cloud-ringed mountains, and timeless secrets.
       </p>
       <!-- features in Expansion -->
-      <div class="md:min-w-[1450px] new-features flex flex-col justify-center items-center mt-10 w-full gap-5">
-        <article class="max-w-[1000px] py-[40px]  grid grid-cols-2 items-strech justify-items-center gap-4">
+      <div class="new-features flex flex-col justify-center items-center mt-10 w-full gap-5">
+        <article class="features-grid max-w-[1200px] py-[40px]">
           <div
-            class="card max-w-[700px] feature-item flex-1 flex gap-4 p-4 rounded-[10px] shadow-xs shadow-black border-2 border-[#ffffff1a]"
+            class="card feature-item"
             v-for="item in state.featuresItem"
             :key="item.title"
           >
@@ -134,8 +134,8 @@ function toggle(i) {
               available in Mists of Pandaria Classic!
             </p>
           </div>
-          <div class="hype-mdedia flex items-start gap-10 mt-16">
-            <div class="media-pic border-2 border-[#eb9110] min-w-[816px]">
+          <div class="hype-mdedia mt-16">
+            <div class="media-pic border-2 border-[#eb9110]">
               <img src="../../../assets/images/prePatch.avif" class="" />
             </div>
             <div class="faqs self-center">
@@ -199,6 +199,44 @@ function toggle(i) {
   color: #ffffffe6;
   filter: drop-shadow(4px 2px 4px rgba(0, 0, 0, 0.4));
 }
+
+.new-features {
+  width: 100%;
+}
+
+.features-grid {
+  width: min(1200px, 100%);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.card.feature-item {
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.hype-mdedia {
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: clamp(1rem, 2vw, 2.5rem);
+  align-items: start;
+}
+
+.media-pic img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.faqs {
+  width: 100%;
+}
+
 .feature-item {
   background: linear-gradient(
     180deg,
@@ -312,4 +350,37 @@ function toggle(i) {
 .heading-juorny {
   filter: drop-shadow(4px 2px 4px rgba(0, 0, 0, 0.4));
 }
+
+
+@media (max-width: 1024px) {
+  .features {
+    padding: 64px 20px;
+  }
+
+  .hype {
+    padding: 2.2rem 1rem;
+  }
+
+  .hype-mdedia {
+    grid-template-columns: 1fr;
+    margin-top: 2rem;
+  }
+
+  .media-pic {
+    max-width: 860px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .features-grid {
+    grid-template-columns: 1fr;
+    padding-top: 1.3rem;
+  }
+
+  .faqButtonTitle {
+    font-size: 1.2rem;
+  }
+}
+
 </style>

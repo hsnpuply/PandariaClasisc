@@ -41,9 +41,9 @@ const state=reactive({
 </script>
 
 <template>
-  <section id="youMightLike" class="youMightLike  !pt-[6rem] !px-[12rem]">
-    <h1 class="text-[60px] text-center !mb-[3rem]">You Might Also Like</h1>
-    <div class="card-wrapper flex items-strech justify-center gap-8" >
+  <section id="youMightLike" class="youMightLike">
+    <h1 class="other-title">You Might Also Like</h1>
+    <div class="card-wrapper">
       <Card
         :img="item.img"
         :alt="item.alt"
@@ -59,11 +59,11 @@ const state=reactive({
 <style scoped>
 .youMightLike {
   min-height: 70vh;
-  padding: clamp(2rem, 4vw, 5rem);
+  padding: clamp(2.5rem, 5vw, 6rem) clamp(1rem, 5vw, 12rem);
   background: url("../../../assets/images/otherBg.avif") no-repeat;
   background-size: cover;
 }
-h1 {
+ .other-title {
   background:
     linear-gradient(0deg, rgba(30, 11, 0, 0.4), rgba(94, 36, 0, 0.4)),
     rgb(53, 39, 39);
@@ -74,5 +74,30 @@ h1 {
   padding-bottom: 2px;
   filter: drop-shadow(4px 2px 4px rgba(0, 0, 0, 0.4));
   font-weight: bold;
+}
+
+.card-wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.5rem;
+  justify-items: center;
+}
+
+.other-title {
+  font-size: clamp(2rem, 5vw, 3.7rem);
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+@media (max-width: 1200px) {
+  .card-wrapper {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .card-wrapper {
+    grid-template-columns: 1fr;
+  }
 }
 </style>

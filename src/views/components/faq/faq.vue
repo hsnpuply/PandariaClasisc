@@ -31,9 +31,9 @@ const toggleFaq = (index) => {
 </script>
 
 <template>
-  <section id="faq" class="faq !pt-[6rem] !px-[12rem]">
-    <div class="faq-layout flex items-end justify-end flex-1">
-      <div class=" max-w-[700px]">
+  <section id="faq" class="faq">
+    <div class="faq-layout">
+      <div class="faq-content">
         <div class="heading">
           <h1>Frequently Asked Questions</h1>
         </div>
@@ -85,9 +85,18 @@ const toggleFaq = (index) => {
 <style scoped>
 .faq {
   min-height: 70vh;
-  padding: clamp(2rem, 4vw, 5rem);
+  padding: clamp(2.5rem, 5vw, 6rem) clamp(1rem, 6vw, 12rem);
   background: url("../../../assets/images/bg-faq.jpg") no-repeat 50% 60%;
   background-size: cover;
+}
+
+.faq-layout {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.faq-content {
+  width: min(700px, 100%);
 }
 
 .heading h1 {
@@ -153,6 +162,16 @@ const toggleFaq = (index) => {
   font-size: clamp(1rem, 1.35vw, 2rem);
   line-height: 1.45;
   max-width: 960px;
+}
+
+@media (max-width: 900px) {
+  .faq-layout {
+    justify-content: center;
+  }
+
+  .faq-content {
+    width: 100%;
+  }
 }
 
 @media (max-width: 768px) {

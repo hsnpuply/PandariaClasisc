@@ -134,18 +134,16 @@ const openTrailer = () => {
       </svg>
     </button>
 
-    <div
-      class="callToArm container mx-auto max-w-[90vw] px-8 flex items-center justify-center mt-7 gap-8"
-    >
+    <div class="callToArm container mx-auto">
       <div class="desc flex items-start gap-1 flex-col">
         <h4 class="text-left text-[#FFF2D9] text-xl font-[500]">
           Pandaria Awaits
         </h4>
-        <h1 class="heading1 text-[60px] leading-14 text-left">
+        <h1 class="heading1 text-left">
           Your Classic <br />
           Journey Continues
         </h1>
-        <p class=" text-left descirption text-[20px] !mt-5">
+        <p class="text-left descirption">
           You've ended Deathwing's destructive rampage, now you must unlock the
           mysteries of a lost continent and discover the dark secrets of
           Pandaria's past. Explore ancient kingdoms hidden since before the
@@ -197,7 +195,7 @@ const openTrailer = () => {
               allowFullScreen="true"
               webkitallowfullscreen="true"
               mozallowfullscreen="true"
-              class="w-[916px] h-[516px]"
+              class="trailer-frame"
             ></iframe>
           </Transition>
         </div>
@@ -208,7 +206,7 @@ const openTrailer = () => {
 <style scoped>
 .hero-wrap {
   max-width: 100%;
-  min-height: calc(153vh);
+  min-height: 100vh;
   border-radius: 10px;
   overflow: hidden;
   background: #0b2219;
@@ -391,6 +389,25 @@ const openTrailer = () => {
   width: min(920px, 100%);
 }
 
+.callToArm {
+  max-width: min(1400px, 92vw);
+  margin-top: 1.75rem;
+  padding: 0 1rem 2rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+  align-items: center;
+  gap: clamp(1rem, 3vw, 2rem);
+}
+
+.descirption {
+  color: #ffffffe6;
+  filter: drop-shadow(4px 2px 4px rgba(0, 0, 0, 0.4));
+  margin-top: 16px;
+  max-width: 720px;
+  font-size: clamp(1rem, 1.7vw, 1.25rem);
+  line-height: 1.5;
+}
+
 .media-shell {
   width: 100%;
   aspect-ratio: 919 / 517;
@@ -530,12 +547,41 @@ const openTrailer = () => {
   margin-bottom: 2px;
   padding-bottom: 2px;
   font-style: normal;
+  font-size: clamp(2.1rem, 5vw, 3.7rem);
+  line-height: 1.05;
 }
-.descirption
-{
-  color:#ffffffe6;
-  filter:drop-shadow(4px 2px 4px rgba(0, 0, 0, 0.4)) ;
-  margin-top:16px;
-  max-width: 720px;
+
+@media (max-width: 1100px) {
+  .callToArm {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .desc {
+    align-items: center;
+    text-align: center;
+  }
+
+  .desc h4,
+  .desc h1,
+  .desc p {
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-wrap {
+    min-height: auto;
+  }
+
+  .hero-video {
+    height: 80vh;
+  }
+
+  .callToArm {
+    max-width: 100%;
+    padding: 0 0.75rem 1rem;
+  }
 }
 </style>

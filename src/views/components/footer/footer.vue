@@ -55,12 +55,10 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <section id="footerSection" class="footerSection !pt-[4rem] !px-[12rem]">
+  <section id="footerSection" class="footerSection">
     <div class="heading">
       <h1 class="text-[#ebdec2] text-center uppercase">Follow Warcraft</h1>
-      <div
-        class="flex items-center justify-center mt-6 gap-8 text-yellow-400 text-3xl"
-      >
+      <div class="social-row">
         <i
           v-for="(icon, index) in state.socialsIcon"
           :key="index"
@@ -69,14 +67,10 @@ onBeforeUnmount(() => {
         ></i>
       </div>
     </div>
-    <div
-      class="footer-main !p-[7rem] flex justify-center items-center flex-col"
-    >
-      <div class="w-full">
-        <div
-          class="top-section w-full flex-1 flex items-center justify-center gap-8"
-        >
-          <div class="w-full">
+    <div class="footer-main">
+      <div class="footer-shell">
+        <div class="top-section">
+          <div class="top-links">
             <a
               v-for="(link, index) in state.links"
               :key="index"
@@ -138,7 +132,7 @@ onBeforeUnmount(() => {
                   v-for="language in state.languages"
                   :key="language"
                   type="button"
-                  class="language-item cursor-pointer flex items-center gap-3 rounded-[8px] px-2 py-2 text-left text-white text-[32px] hover:bg-[#ffffff10] transition-colors"
+                  class="language-item cursor-pointer flex items-center gap-3 rounded-[8px] px-2 py-2 text-left text-white hover:bg-[#ffffff10] transition-colors"
                   @click="selectLanguage(language)"
                 >
                   <svg
@@ -165,11 +159,9 @@ onBeforeUnmount(() => {
         </div>
       </div>
       <hr />
-      <div
-        class="bottom-section gap-4 flex w-full items-center flex-col justify-center mt-8"
-      >
-        <div class="blizzard w-full flex-1 flex items-start">
-          <div class="copyRight flex gap-8">
+      <div class="bottom-section">
+        <div class="blizzard">
+          <div class="copyRight">
             <img :src="BlizzardLogo" alt="" class="w-[170px] h-full blizzImage" />
             <div class="copyrightDesc ">
               <div class="text-[#ffffff80]">
@@ -185,17 +177,15 @@ onBeforeUnmount(() => {
                   owners.
                 </span>
               </div>
-              <div class="usefulLinks flex items-center gap-3 mt-2">
+              <div class="usefulLinks">
                 <span class="text-sm cursor-pointer text-white hover:bg-[#ffffff08] rounded-[8px] px-3 py-4" v-for="(item,index) in state.links" :key="index">
                   {{ item }}
                 </span>
               </div>
             </div>
           </div>
-          <div
-            class="socialItems flex items-center justify-end flex-1 gap-8 text-white"
-          >
-            <div class="flex items-center gap-3">
+          <div class="socialItems">
+            <div class="socialButtons">
               <a
                 v-for="(icon, index) in state.socialsIcon"
                 :key="index"
@@ -207,7 +197,7 @@ onBeforeUnmount(() => {
             </div>
           </div>
         </div>
-        <div class="usk self-start ">
+        <div class="usk">
           <img src="../../../assets/images/usk12.png" alt="" class="cursor-pointer">
         </div>
       </div>
@@ -219,7 +209,94 @@ onBeforeUnmount(() => {
   background: url("../../../assets/images/footerBg.avif") no-repeat;
   background-size: cover;
   min-height: 50vh;
+
+  padding: clamp(2.5rem, 5vw, 4rem) clamp(1rem, 5vw, 12rem);
 }
+
+.social-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1.5rem;
+  gap: clamp(0.8rem, 2vw, 2rem);
+  color: #facc15;
+}
+
+.footer-main {
+  padding: clamp(2rem, 6vw, 7rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-shell {
+  width: 100%;
+}
+
+.top-section {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.top-links {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.bottom-section {
+  gap: 1rem;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.blizzard {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.copyRight {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.usefulLinks {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.5rem;
+}
+
+.socialItems {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 1;
+  color: #fff;
+}
+
+.socialButtons {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.usk {
+  align-self: flex-start;
+}
+
 .blizzImage {
   filter: drop-shadow(4px 2px 4px rgba(46, 46, 46, 0.4));
 }
@@ -254,4 +331,43 @@ hr {
   border-bottom: 1px solid #ffffff14;
   transform: rotate(45deg);
 }
+
+
+@media (max-width: 1100px) {
+  .top-section,
+  .blizzard {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .socialItems {
+    justify-content: flex-start;
+  }
+
+  .langauge,
+  .language-menu {
+    width: 100%;
+  }
+
+  .language-menu {
+    right: auto;
+    left: 0;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .language-menu {
+    position: fixed;
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+    width: auto;
+  }
+
+  .language-menu-arrow {
+    display: none;
+  }
+}
+
 </style>
