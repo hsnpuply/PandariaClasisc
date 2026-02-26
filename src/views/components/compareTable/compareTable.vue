@@ -1,28 +1,28 @@
 <script setup>
-import subscriptionImage from "../../../assets/images/WoW_Classic_MoP_Launch_.avif";
-import heroicPackImage from "../../../assets/images/featureSection.avif";
-import epicPackImage from "../../../assets/images/prePatch.avif";
+import WowToken from "../../../assets/images/wow-token.avif";
+import HeroicPack from "../../../assets/images/heroic-pack.jpg";
+import GoldenPack from "../../../assets/images/golden-pack.avif";
 
 const packs = [
   {
     title: "Subscription",
     subtitle: "All You Need to Play",
-    buttonLabel: "SUB NOW",
-    image: subscriptionImage,
+    buttonLabel: "Subscribe Now",
+    image: WowToken,
     imageAlt: "Subscription bundle",
   },
   {
     title: "Sha-Infused Heroic Pack",
     subtitle: "Requires Subscription",
-    buttonLabel: "SUB NOW",
-    image: heroicPackImage,
+    buttonLabel: "Buy Now",
+    image: HeroicPack,
     imageAlt: "Sha-Infused Heroic Pack bundle",
   },
   {
     title: "Sha-Infused Epic Pack",
     subtitle: "Best Value",
-    buttonLabel: "SUB NOW",
-    image: epicPackImage,
+    buttonLabel: "Upgrade Now",
+    image: GoldenPack,
     imageAlt: "Sha-Infused Epic Pack bundle",
   },
 ];
@@ -75,14 +75,22 @@ const heroicLimit = Math.ceil(featureRows.length / 2);
       </p>
     </div>
 
-    <div class="table-wrap">
+    <div class="table-wrap ">
       <table class="bundle-table">
         <tbody class="bundle-media">
           <tr>
             <td class="feature-spacer"></td>
-            <td v-for="pack in packs" :key="`${pack.title}-image`" class="media-cell">
+            <td
+              v-for="pack in packs"
+              :key="`${pack.title}-image`"
+              class="media-cell"
+            >
               <div class="media-card">
-                <img :src="pack.image" :alt="pack.imageAlt" class="media-image" />
+                <img
+                  :src="pack.image"
+                  :alt="pack.imageAlt"
+                  class="media-image"
+                />
               </div>
             </td>
           </tr>
@@ -91,12 +99,18 @@ const heroicLimit = Math.ceil(featureRows.length / 2);
         <tbody class="bundle-headings">
           <tr>
             <td class="feature-spacer"></td>
-            <td v-for="pack in packs" :key="`${pack.title}-meta`" class="pack-cell">
+            <td
+              v-for="pack in packs"
+              :key="`${pack.title}-meta`"
+              class="pack-cell"
+            >
               <div class="pack-meta flex flex-col gap-2">
                 <h3 class="pack-title">{{ pack.title }}</h3>
                 <p class="pack-subtitle">{{ pack.subtitle }}</p>
                 <span class="pack-divider">-</span>
-                <button type="button" class="pack-button">{{ pack.buttonLabel }}</button>
+                <button type="button" class="pack-button">
+                  {{ pack.buttonLabel }}
+                </button>
               </div>
             </td>
           </tr>
@@ -109,7 +123,8 @@ const heroicLimit = Math.ceil(featureRows.length / 2);
             class="feature-row"
           >
             <td class="feature-label">
-              {{ feature.label }}<sup v-if="feature.footnote">{{ feature.footnote }}</sup>
+              {{ feature.label
+              }}<sup v-if="feature.footnote">{{ feature.footnote }}</sup>
             </td>
             <td class="check-cell">
               <span v-if="index === 0" class="checkmark">&#10003;</span>
@@ -123,6 +138,25 @@ const heroicLimit = Math.ceil(featureRows.length / 2);
           </tr>
         </tbody>
       </table>
+      <!-- comment -->
+       <div class="pn mx-auto max-w-[1400px] mt-20 text-[#00000080]">
+        <p> 
+          ¹ Merriment pet, Sha-Warped Tea Set toy, Sha-Warped Cloud Serpent, Sha-Warped Riding Tiger, and Ensemble: Sha-Warped Collection are immediately available on modern World of Warcraft® realms.
+        </p>
+        <p>
+          ² Joyous pet, Sha-Touched Tea Set toy, Sha-Touched Cloud Serpent, Sha-Touched Riding Tiger, and Ensemble: Stormstout’s Sha-Touched Collection are immediately available on WoW® Classic progression realms.
+        </p>
+        <p class="mb-4">
+          Level 85 Character Boost only available on WoW Classic progression realms. <br/>
+          Level 85 Character Boost is only usable on the WoW game account for which it was purchased or redeemed as a gift.<br/>
+          The Epic Pack will not re-grant any in-game items previously unlocked on your account from the Heroic Pack. <br/>
+        </p>
+        <p>
+          Requires Internet connection, Battle.net® Account, and Battle.net® desktop app to play. <br/>
+          Players under the age of 18 are required to obtain parental/guardian consent to purchase game points, products, and/or services.
+        </p>
+       </div>
+
     </div>
   </section>
 </template>
@@ -132,12 +166,12 @@ const heroicLimit = Math.ceil(featureRows.length / 2);
   background-image: url(../../../assets/images/2600_ComparisonTable.avif);
   background-size: cover;
   background-position: center;
-  padding: 80px 24px 120px;
+  padding: 40px 150px;
 }
 
 .compare-desc {
-  margin: 0 auto 38px;
-  max-width: 860px;
+  margin: 64px auto 96px;
+  max-width: 700px;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -159,7 +193,7 @@ const heroicLimit = Math.ceil(featureRows.length / 2);
 .compare-desc p {
   font-size: clamp(1rem, 1.5vw, 1.25rem);
   line-height: 1.5;
-  color: #4c3528;
+  color: #000;
 }
 
 .table-wrap {
@@ -176,13 +210,12 @@ const heroicLimit = Math.ceil(featureRows.length / 2);
 
 .feature-spacer,
 .feature-label {
-  width: 32%;
+  /* width: 32%; */
 }
 
 .media-cell,
 .pack-cell,
 .check-cell {
-  width: 22.66%;
   text-align: center;
 }
 
@@ -197,46 +230,106 @@ const heroicLimit = Math.ceil(featureRows.length / 2);
 }
 
 .media-image {
-  width: 100%;
+  width: 374px !important;
+  height: 210px;
   aspect-ratio: 16 / 8;
   object-fit: cover;
   display: block;
 }
+.media-card {
+  position: relative;
+}
+.media-card::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-image: url("../../../assets/images/silverBorder.avif");
+  background-size: cover;
+  background-position: center left;
+  position: absolute;
+  top: 0;
+  left: -3px;
+  z-index: 1;
+  pointer-events: none;
+}
+/* .media-image::after {
+  content: "";
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  border: 5px solid transparent;
+  -webkit-border-image: url("../../../assets/images/silverBorder.avif");
+  border-image: url("../../../assets/images/silverBorder.avif");
+  /* border-image-slice: 22 22 fill; */
+/* pointer-events: none;
+  z-index: 122;
+} */
 
 .bundle-headings td {
   padding: 14px 12px 18px;
 }
 
 .pack-meta {
+  width: min(100%, 374px);
+  margin: 0 auto;
   align-items: center;
+  text-align: center;
 }
 
 .pack-title {
-  font-size: clamp(1.3rem, 2vw, 2rem);
-  color: #38251a;
-  line-height: 1.15;
+  background:
+    linear-gradient(0deg, rgba(30, 11, 0, 0.4), rgba(94, 36, 0, 0.4)),
+    rgb(53, 39, 39);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 2px;
+  padding-bottom: 2px;
+  font-size: 23px;
+  font-weight: bold;
+  letter-spacing: 0.4px;
+  width: 100%;
+  min-height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .pack-subtitle {
-  font-size: clamp(1rem, 1.2vw, 1.45rem);
+  font-size: clamp(1rem, 1.2vw, 17px);
   color: #005e4b;
   font-weight: 700;
+  width: 100%;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .pack-divider {
   color: #523f34;
   line-height: 1;
+  width: 100%;
+  text-align: center;
 }
 
 .pack-button {
   margin-top: 8px;
+  text-transform: uppercase;
   width: 100%;
   border: 2px solid #f4b400;
   background: #e8870a;
   color: #121212;
   min-height: 56px;
   border-radius: 8px;
-  font-size: clamp(1rem, 1.1vw, 1.3rem);
+  font-size: clamp(0.875rem, 1.1vw, 1.1rem);
   font-weight: 700;
   cursor: pointer;
   transition: background-color 0.2s ease;
@@ -275,6 +368,10 @@ const heroicLimit = Math.ceil(featureRows.length / 2);
 @media (max-width: 900px) {
   .compareTable {
     padding: 56px 14px 80px;
+  }
+
+  .compare-desc {
+    margin: 24px auto 56px;
   }
 }
 </style>
