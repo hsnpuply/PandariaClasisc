@@ -6,6 +6,7 @@ import HeroSection from "../components/home/HeroSection.vue";
 import Features from "../components/features/features.vue";
 import CompareTable from "../components/compareTable/compareTable.vue"
 import Faq from "../components/faq/faq.vue";
+import Other from "../components/other-interests/other.vue";
 const { state } = useAppController();
 const title = computed(() => state.title);
 </script>
@@ -18,6 +19,7 @@ const title = computed(() => state.title);
     <div class="divider w-full" ></div>
     <CompareTable />
     <Faq/>
+    <Other/>
   </section>
   <!-- <section class="home-page"></section> -->
 </template>
