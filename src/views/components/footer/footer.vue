@@ -10,6 +10,14 @@ const state = reactive({
     "fab fa-instagram",
   ],
   links: ["Careers", "About", "Support", "Contact Us", "Press", "API"],
+  legalLinks: ["Privacy", "Legal", "Terms", "Cookie Policy", "Cookie Settings"],
+  bottomSocialIcons: [
+    "fab fa-x-twitter",
+    "fab fa-facebook-f",
+    "fab fa-reddit-alien",
+    "fab fa-instagram",
+    "fab fa-youtube",
+  ],
   isLanguageMenuOpen: false,
   selectedLanguage: "English (US)",
   languages: [
@@ -125,9 +133,9 @@ onBeforeUnmount(() => {
             </button>
             <div
               v-if="state.isLanguageMenuOpen"
-              class="language-menu absolute right-0 bottom-full mb-3 w-[520px] rounded-[12px] border border-[#ffffff14] bg-[#10172b] p-5 shadow-[0_16px_40px_rgba(0,0,0,0.45)] z-20"
+              class="language-menu"
             >
-              <div class="grid grid-cols-2 gap-x-8 gap-y-3">
+              <div class="language-grid">
                 <button
                   v-for="language in state.languages"
                   :key="language"
@@ -164,7 +172,7 @@ onBeforeUnmount(() => {
           <div class="copyRight">
             <img :src="BlizzardLogo" alt="" class="w-[170px] h-full blizzImage" />
             <div class="copyrightDesc ">
-              <div class="text-[#ffffff80]">
+              <div class="copyright-text text-[#ffffff80]">
                 <span class=""> ©2026 Blizzard Entertainment, Inc. </span><br />
                 <span>
                   All
@@ -177,8 +185,12 @@ onBeforeUnmount(() => {
                   owners.
                 </span>
               </div>
-              <div class="usefulLinks">
-                <span class="text-sm cursor-pointer text-white hover:bg-[#ffffff08] rounded-[8px] px-3 py-4" v-for="(item,index) in state.links" :key="index">
+              <div class="usefulLinks legalLinks">
+                <span
+                  class="text-sm cursor-pointer text-white hover:bg-[#ffffff08] rounded-[8px] px-3 py-4"
+                  v-for="(item,index) in state.legalLinks"
+                  :key="index"
+                >
                   {{ item }}
                 </span>
               </div>
@@ -187,7 +199,7 @@ onBeforeUnmount(() => {
           <div class="socialItems">
             <div class="socialButtons">
               <a
-                v-for="(icon, index) in state.socialsIcon"
+                v-for="(icon, index) in state.bottomSocialIcons"
                 :key="index"
                 href="#"
                 class="w-[50px] h-[50px] rounded-full bg-[#ffffff08] hover:bg-[#ffffff20] flex items-center justify-center hover:brightness-125 transition duration-300"
@@ -247,6 +259,7 @@ onBeforeUnmount(() => {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
+  justify-content: center;
 }
 
 .bottom-section {
@@ -320,53 +333,219 @@ hr {
   line-height: 1.3;
 }
 
+.language-menu {
+  position: absolute;
+  left: 50%;
+  top: calc(100% + 10px);
+  transform: translateX(-50%);
+  width: min(520px, 92vw);
+  max-height: min(62vh, 560px);
+  overflow-y: auto;
+  border-radius: 12px;
+  border: 1px solid #ffffff14;
+  background: #10172b;
+  padding: 1rem;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+  z-index: 40;
+}
+
+.language-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.65rem 1.2rem;
+}
+
 .language-menu-arrow {
   position: absolute;
-  right: 36px;
-  bottom: -10px;
+  left: 50%;
+  top: -9px;
+  margin-left: -10px;
   width: 20px;
   height: 20px;
   background: #10172b;
+  border-left: 1px solid #ffffff14;
+  border-top: 1px solid #ffffff14;
   border-right: 1px solid #ffffff14;
   border-bottom: 1px solid #ffffff14;
-  transform: rotate(45deg);
+  transform: rotate(45deg) skew(0deg, 0deg);
 }
 
 
 @media (max-width: 1100px) {
-  .top-section,
+  .top-section {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .top-links {
+    justify-content: center;
+  }
+
+  .langauge {
+    width: auto;
+    order: -1;
+  }
+
+  .language-menu {
+    width: min(520px, 92vw);
+  }
+
   .blizzard {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    text-align: center;
+  }
+
+  .copyRight {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
   }
 
   .socialItems {
-    justify-content: flex-start;
-  }
-
-  .langauge,
-  .language-menu {
+    justify-content: center;
     width: 100%;
   }
 
-  .language-menu {
-    right: auto;
-    left: 0;
-    max-width: 100%;
+  .usefulLinks {
+    justify-content: center;
+  }
+
+  .usk {
+    align-self: center;
   }
 }
 
 @media (max-width: 768px) {
-  .language-menu {
-    position: fixed;
-    left: 1rem;
-    right: 1rem;
-    bottom: 1rem;
-    width: auto;
+  .footerSection {
+    padding: 2.5rem 0.75rem 2rem;
   }
 
-  .language-menu-arrow {
-    display: none;
+  .footer-main {
+    padding: 2rem 1rem 1.25rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    line-height: 1.1;
+  }
+
+  .social-row {
+    margin-top: 1rem;
+    gap: 1.1rem;
+  }
+
+  .icons {
+    font-size: 2.1rem !important;
+  }
+
+  .top-section {
+    gap: 0.8rem;
+  }
+
+  .top-links {
+    gap: 0.2rem 0.5rem;
+    max-width: 500px;
+  }
+
+  .top-links a {
+    font-size: 0.95rem !important;
+    font-weight: 700;
+    padding: 0.35rem 0.5rem !important;
+  }
+
+  .langauge > button {
+    gap: 0.4rem !important;
+    font-size: 1.05rem !important;
+    padding: 0.35rem 0.55rem !important;
+  }
+
+  .langauge > button svg.w-10 {
+    width: 1.2rem !important;
+    height: 1.2rem !important;
+  }
+
+  .langauge > button svg.w-6 {
+    width: 1rem !important;
+    height: 1rem !important;
+  }
+
+  hr {
+    margin-top: 20px;
+    opacity: 0.35;
+  }
+
+  .bottom-section {
+    margin-top: 1.4rem;
+  }
+
+  .blizzImage {
+    width: 185px !important;
+  }
+
+  .socialButtons a {
+    width: 38px !important;
+    height: 38px !important;
+  }
+
+  .socialButtons i {
+    font-size: 0.98rem !important;
+  }
+
+  .copyright-text {
+    font-size: 0.92rem;
+    line-height: 1.35;
+  }
+
+  .usefulLinks {
+    margin-top: 0.6rem;
+    gap: 0.1rem 0.35rem;
+  }
+
+  .usefulLinks span {
+    font-size: 0.95rem !important;
+    padding: 0.28rem 0.48rem !important;
+  }
+
+  .usk img {
+    width: 62px;
+    height: auto;
+  }
+
+  .language-menu {
+    width: min(420px, 92vw);
+  }
+
+  .language-grid {
+    gap: 0.5rem 0.8rem;
+  }
+}
+
+@media (max-width: 420px) {
+  h1 {
+    font-size: 2.2rem;
+  }
+
+  .top-links {
+    max-width: 350px;
+    gap: 0.1rem 0.35rem;
+  }
+
+  .top-links a {
+    font-size: 0.85rem !important;
+  }
+
+  .copyright-text {
+    font-size: 0.82rem;
+  }
+
+  .usefulLinks span {
+    font-size: 0.84rem !important;
+  }
+
+  .language-grid {
+    grid-template-columns: 1fr;
   }
 }
 

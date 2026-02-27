@@ -43,7 +43,7 @@ const state=reactive({
 <template>
   <section id="youMightLike" class="youMightLike">
     <h1 class="other-title">You Might Also Like</h1>
-    <div class="card-wrapper">
+    <div class="card-wrapper grid grid-cols-2 gap-4  lg:flex lg:items-strech lg:justify-center ">
       <Card
         :img="item.img"
         :alt="item.alt"
@@ -76,12 +76,11 @@ const state=reactive({
   font-weight: bold;
 }
 
-.card-wrapper {
+/* .card-wrapper {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 1.5rem;
   justify-items: center;
-}
+} */
 
 .other-title {
   font-size: clamp(2rem, 5vw, 3.7rem);
@@ -97,7 +96,7 @@ const state=reactive({
 
 @media (max-width: 700px) {
   .card-wrapper {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 </style>

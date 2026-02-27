@@ -62,6 +62,12 @@ const featureRows = [
 ];
 
 const heroicLimit = Math.ceil(featureRows.length / 2);
+
+const hasFeature = (packIndex, featureIndex) => {
+  if (packIndex === 0) return featureIndex === 0;
+  if (packIndex === 1) return featureIndex < heroicLimit;
+  return true;
+};
 </script>
 
 <template>
@@ -75,7 +81,7 @@ const heroicLimit = Math.ceil(featureRows.length / 2);
       </p>
     </div>
 
-    <div class="table-wrap ">
+    <div class="table-wrap">
       <table class="bundle-table">
         <tbody class="bundle-media">
           <tr>
@@ -86,11 +92,7 @@ const heroicLimit = Math.ceil(featureRows.length / 2);
               class="media-cell"
             >
               <div class="media-card">
-                <img
-                  :src="pack.image"
-                  :alt="pack.imageAlt"
-                  class="media-image"
-                />
+                <img :src="pack.image" :alt="pack.imageAlt" class="media-image" />
               </div>
             </td>
           </tr>
@@ -127,36 +129,88 @@ const heroicLimit = Math.ceil(featureRows.length / 2);
               }}<sup v-if="feature.footnote">{{ feature.footnote }}</sup>
             </td>
             <td class="check-cell">
-              <span v-if="index === 0" class="checkmark">&#10003;</span>
+              <span v-if="hasFeature(0, index)" class="checkmark">&#10003;</span>
             </td>
             <td class="check-cell">
-              <span v-if="index < heroicLimit" class="checkmark">&#10003;</span>
+              <span v-if="hasFeature(1, index)" class="checkmark">&#10003;</span>
             </td>
             <td class="check-cell">
-              <span class="checkmark">&#10003;</span>
+              <span v-if="hasFeature(2, index)" class="checkmark">&#10003;</span>
             </td>
           </tr>
         </tbody>
       </table>
-      <!-- comment -->
-       <div class="pn">
-        <p> 
-          ¹ Merriment pet, Sha-Warped Tea Set toy, Sha-Warped Cloud Serpent, Sha-Warped Riding Tiger, and Ensemble: Sha-Warped Collection are immediately available on modern World of Warcraft® realms.
+
+      <div class="mobile-bundles">
+        <div class="mobile-pack-grid">
+          <article
+            v-for="pack in packs"
+            :key="`${pack.title}-mobile`"
+            class="mobile-pack"
+          >
+            <div class="media-card">
+              <img :src="pack.image" :alt="pack.imageAlt" class="mobile-image" />
+            </div>
+            <h3 class="mobile-pack-title">{{ pack.title }}</h3>
+            <p class="mobile-pack-subtitle">{{ pack.subtitle }}</p>
+            <button type="button" class="pack-button">
+              {{ pack.buttonLabel }}
+            </button>
+          </article>
+        </div>
+
+        <div class="mobile-feature-list">
+          <div
+            v-for="(feature, index) in featureRows"
+            :key="`${feature.label}-mobile`"
+            class="mobile-feature-row"
+          >
+            <p class="mobile-feature-label">
+              {{ feature.label
+              }}<sup v-if="feature.footnote">{{ feature.footnote }}</sup>
+            </p>
+            <div class="mobile-checks">
+              <span class="mobile-check" :class="{ on: hasFeature(0, index) }"
+                >&#10003;</span
+              >
+              <span class="mobile-check" :class="{ on: hasFeature(1, index) }"
+                >&#10003;</span
+              >
+              <span class="mobile-check" :class="{ on: hasFeature(2, index) }"
+                >&#10003;</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pn">
+        <p>
+          1 Merriment pet, Sha-Warped Tea Set toy, Sha-Warped Cloud Serpent,
+          Sha-Warped Riding Tiger, and Ensemble: Sha-Warped Collection are
+          immediately available on modern World of Warcraft realms.
         </p>
         <p>
-          ² Joyous pet, Sha-Touched Tea Set toy, Sha-Touched Cloud Serpent, Sha-Touched Riding Tiger, and Ensemble: Stormstout’s Sha-Touched Collection are immediately available on WoW® Classic progression realms.
+          2 Joyous pet, Sha-Touched Tea Set toy, Sha-Touched Cloud Serpent,
+          Sha-Touched Riding Tiger, and Ensemble: Stormstout's Sha-Touched
+          Collection are immediately available on WoW Classic progression
+          realms.
         </p>
         <p class="mb-4">
-          Level 85 Character Boost only available on WoW Classic progression realms. <br/>
-          Level 85 Character Boost is only usable on the WoW game account for which it was purchased or redeemed as a gift.<br/>
-          The Epic Pack will not re-grant any in-game items previously unlocked on your account from the Heroic Pack. <br/>
+          Level 85 Character Boost only available on WoW Classic progression
+          realms. <br />
+          Level 85 Character Boost is only usable on the WoW game account for
+          which it was purchased or redeemed as a gift.<br />
+          The Epic Pack will not re-grant any in-game items previously unlocked
+          on your account from the Heroic Pack. <br />
         </p>
         <p>
-          Requires Internet connection, Battle.net® Account, and Battle.net® desktop app to play. <br/>
-          Players under the age of 18 are required to obtain parental/guardian consent to purchase game points, products, and/or services.
+          Requires Internet connection, Battle.net Account, and Battle.net
+          desktop app to play. <br />
+          Players under the age of 18 are required to obtain parental/guardian
+          consent to purchase game points, products, and/or services.
         </p>
-       </div>
-
+      </div>
     </div>
   </section>
 </template>
@@ -216,9 +270,8 @@ const heroicLimit = Math.ceil(featureRows.length / 2);
   border-collapse: collapse;
 }
 
-.feature-spacer,
-.feature-label {
-  /* width: 32%; */
+.mobile-bundles {
+  display: none;
 }
 
 .media-cell,
@@ -235,6 +288,7 @@ const heroicLimit = Math.ceil(featureRows.length / 2);
   border: 2px solid #f5ba2b;
   border-radius: 2px;
   overflow: hidden;
+  position: relative;
 }
 
 .media-image {
@@ -244,9 +298,7 @@ const heroicLimit = Math.ceil(featureRows.length / 2);
   object-fit: cover;
   display: block;
 }
-.media-card {
-  position: relative;
-}
+
 .media-card::before {
   content: "";
   width: 100%;
@@ -260,23 +312,6 @@ const heroicLimit = Math.ceil(featureRows.length / 2);
   z-index: 1;
   pointer-events: none;
 }
-/* .media-image::after {
-  content: "";
-  width: 100px;
-  height: 100px;
-  background-color: red;
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  border: 5px solid transparent;
-  -webkit-border-image: url("../../../assets/images/silverBorder.avif");
-  border-image: url("../../../assets/images/silverBorder.avif");
-  /* border-image-slice: 22 22 fill; */
-/* pointer-events: none;
-  z-index: 122;
-} */
 
 .bundle-headings td {
   padding: 14px 12px 18px;
@@ -299,7 +334,7 @@ const heroicLimit = Math.ceil(featureRows.length / 2);
   margin-bottom: 2px;
   padding-bottom: 2px;
   font-size: 23px;
-  font-weight: bold;
+  font-weight: 700;
   letter-spacing: 0.4px;
   width: 100%;
   min-height: 58px;
@@ -384,6 +419,125 @@ const heroicLimit = Math.ceil(featureRows.length / 2);
 
   .compare-desc {
     margin: 24px auto 56px;
+  }
+
+  .table-wrap {
+    overflow: visible;
+  }
+
+  .bundle-table {
+    display: none;
+  }
+
+  .mobile-bundles {
+    display: block;
+  }
+
+  .mobile-pack-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .mobile-pack {
+    text-align: center;
+  }
+
+  .mobile-image {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .mobile-pack-title {
+    margin-top: 10px;
+    font-size: 1.15rem;
+    color: #3c2619;
+    line-height: 1.1;
+    min-height: 44px;
+  }
+
+  .mobile-pack-subtitle {
+    font-size: 0.95rem;
+    min-height: 40px;
+    color: #005e4b;
+    font-weight: 700;
+    line-height: 1.1;
+  }
+
+  .mobile-pack .pack-button {
+    min-height: 52px;
+    font-size: 1rem;
+    margin-top: 10px;
+  }
+
+  .mobile-feature-list {
+    margin-top: 18px;
+    border-top: 1px solid rgba(75, 53, 38, 0.2);
+  }
+
+  .mobile-feature-row {
+    border-bottom: 1px solid rgba(75, 53, 38, 0.2);
+    padding: 12px 0;
+  }
+
+  .mobile-feature-label {
+    font-size: 0.95rem;
+    color: #2a1d15;
+    line-height: 1.3;
+    margin-bottom: 8px;
+  }
+
+  .mobile-checks {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    text-align: center;
+  }
+
+  .mobile-check {
+    color: transparent;
+    font-size: 1.3rem;
+    font-weight: 700;
+  }
+
+  .mobile-check.on {
+    color: #2a1d15;
+  }
+
+  .pn {
+    font-size: 0.85rem;
+    line-height: 1.45;
+  }
+}
+
+@media (max-width: 640px) {
+  .heading-comare {
+    font-size: 2.6rem;
+  }
+
+  .compare-desc p {
+    font-size: 1.05rem;
+  }
+
+  .mobile-image {
+    height: 98px;
+  }
+
+  .mobile-pack-title {
+    font-size: 0.9rem;
+    min-height: 34px;
+  }
+
+  .mobile-pack-subtitle {
+    font-size: 0.75rem;
+    min-height: 34px;
+  }
+
+  .mobile-pack .pack-button {
+    min-height: 44px;
+    font-size: 0.84rem;
+    padding: 0 6px;
   }
 }
 </style>

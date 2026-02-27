@@ -58,6 +58,7 @@ const props = defineProps({
   background-size: cover;
   padding: .5rem 1rem 1.3rem .5rem;
   color: #fff;
+  height: 210px;
 }
 h1 {
   background:
