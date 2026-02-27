@@ -204,7 +204,7 @@ const desktopMenuLinkClass =
         </li>
       </ul>
       <div class="secondary-menu flex items-center gap-2 px-6">
-        <div class="account-menu relative group/account pb-2">
+        <div class="account-menu relative group/account">
           <button
             type="button"
             class="account-logo cursor-pointer min-h-[52px] hover:bg-[#ffffff0d] flex items-center gap-1 px-3 rounded-[8px] transition-colors"
