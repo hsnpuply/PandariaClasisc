@@ -1,14 +1,12 @@
 <script setup>
 import { computed } from "vue";
-import { useAppController } from "@/controllers/ui/useAppController";
-import Header from "../components/common/header.vue";
+import Header from "../components/common/header/header.vue";
 import HeroSection from "../components/home/HeroSection.vue";
 import Features from "../components/features/features.vue";
 import CompareTable from "../components/compareTable/compareTable.vue"
 import Faq from "../components/faq/faq.vue";
 import Other from "../components/other-interests/other.vue";
 import Footer from "../components/footer/footer.vue"
-const { state } = useAppController();
 const title = computed(() => state.title);
 </script>
 <template>
