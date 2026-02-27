@@ -121,10 +121,10 @@ function toggle(i) {
           <div
             class="hype-desc flex-1 flex items-center flex-col justify-center text-center"
           >
-            <h5 class="text-2xl heading-juorny text-[#FFF2D9]">
+            <h5 class="text-xl md:text-2xl heading-juorny text-[#FFF2D9]">
               Find Your Center. Strike with Power.
             </h5>
-            <h2 class="feat-heading text-[60px]">
+            <h2 class="feat-heading text-4xl !my-4 md:my-2  lg:text-[60px]">
               Enhancements & Improvements
             </h2>
             <p class="feat-desc text-[20px] max-w-[712px]">

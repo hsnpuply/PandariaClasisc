@@ -38,7 +38,7 @@ const toggleFaq = (index) => {
           <h1>Frequently Asked Questions</h1>
         </div>
 
-        <div class="faq-list self-end">
+        <div class="faq-list backdrop-blur-[1.4px] self-end">
           <article
             v-for="(faq, index) in state.faqs"
             :key="faq.question"
@@ -52,7 +52,7 @@ const toggleFaq = (index) => {
               :aria-controls="`faq-answer-${index}`"
               @click="toggleFaq(index)"
             >
-              <span class="text-2xl">{{ faq.question }}</span>
+              <span class="text-base xl:text-xl">{{ faq.question }}</span>
               <svg
                 class="faq-icon"
                 viewBox="0 0 24 24"
@@ -119,7 +119,6 @@ const toggleFaq = (index) => {
   margin-top: 2.2rem;
   border-top: 1px solid rgba(255, 255, 255, 0.2);
   background: rgba(0, 0, 0, 0.18);
-  backdrop-filter: blur(2px);
   padding: 5px 20px;
 }
 

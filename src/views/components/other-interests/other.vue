@@ -43,7 +43,7 @@ const state=reactive({
 <template>
   <section id="youMightLike" class="youMightLike">
     <h1 class="other-title">You Might Also Like</h1>
-    <div class="card-wrapper grid grid-cols-2 gap-4  lg:flex lg:items-strech lg:justify-center ">
+    <div class="card-wrapper grid !grid-cols-1 md:!grid-cols-2 gap-4 place-items-center  lg:flex lg:items-strech lg:justify-center ">
       <Card
         :img="item.img"
         :alt="item.alt"

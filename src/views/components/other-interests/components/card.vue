@@ -24,7 +24,7 @@ const props = defineProps({
 </script>
 <template>
   <div
-    class="card max-w-[322px] h-full group hover:brightness-125 transition !duration-[1000ms] ease-in-out"
+    class="card w-full  md:!max-w-[322px] h-full group hover:brightness-125 transition !duration-[1000ms] ease-in-out"
   >
     <div
       class="image-box overflow-hidden border-b-2 border-[#f5ba2b] !h-[181px] bg-red-400"
@@ -39,7 +39,7 @@ const props = defineProps({
       class="card-desc min-h-[174px] flex flex-col items-center gap-4 justify-center"
     >
       <div class="header-card text-center">
-        <h1>{{ props.headerTitle }}</h1>
+        <h1 class="!text-xl  md:!text-lg xl:!text-xl">{{ props.headerTitle }}</h1>
         <h2 v-if="props.headerSubtitle !== ''">{{ props.headerSubtitle }}</h2>
       </div>
       <div class="card-desc-text text-center">
