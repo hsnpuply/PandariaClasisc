@@ -60,19 +60,22 @@ const openTrailer = () => {
         <img
           :src="pandariaLogo"
           alt="Mists of Pandaria Classic"
-          class="hero-logo"
+          class="hero-logo max-w-[clamp(240px,30vw,500px)]"
         />
 
-        <h1 class="hero-title text-[48px] w-full">Rediscover Pure Adventure</h1>
+        <h1 class="hero-title !text-3xl lg:!text-[3rem] w-full">
+          Rediscover Pure Adventure
+        </h1>
 
-        <p class="hero-description">
+        <p class="hero-description text-white lg:!text-xl font-semibold">
           Mists of Pandaria Classic™ is now available and is included with an
           active WoW Subscription or game time!
         </p>
 
         <div class="hero-actions">
-          <button type="button" class="shop-btn">SHOP UPGRADES</button>
-          <button type="button" class="subscribe-btn">SUBSCRIBE</button>
+          <!-- min-height: 62px; min-width: 240px; -->
+          <button type="button" class="shop-btn !text-base md:!text-xl max-w-[20px] md:!min-w-[240px] md:!min-h-[62px]">SHOP UPGRADES</button>
+          <button type="button" class="subscribe-btn !text-base md:!text-xl max-w-[20px] md:!min-w-[240px] md:!min-h-[62px]">SUBSCRIBE</button>
         </div>
 
         <div class="availability">
@@ -136,14 +139,14 @@ const openTrailer = () => {
 
     <div class="callToArm container mx-auto">
       <div class="desc flex items-start gap-1 flex-col">
-        <h4 class="text-left text-[#FFF2D9] text-xl font-[500]">
+        <h4 class="text-left text-[#FFF2D9] text-base   md:text-xl font-[500]">
           Pandaria Awaits
         </h4>
-        <h1 class="heading1 text-left">
+        <h1 class="heading1 w-full   text-left">
           Your Classic <br />
           Journey Continues
         </h1>
-        <p class="text-left descirption">
+        <p class="text-left descirption px-10 md:px-0 ">
           You've ended Deathwing's destructive rampage, now you must unlock the
           mysteries of a lost continent and discover the dark secrets of
           Pandaria's past. Explore ancient kingdoms hidden since before the
@@ -269,11 +272,6 @@ const openTrailer = () => {
   text-align: center;
 }
 
-.hero-logo {
-  width: min(500px, 80vw);
-  object-fit: contain;
-}
-
 .hero-title {
   margin-top: clamp(1rem, 2vw, 1.8rem);
   color: #f6dfc0;
@@ -306,8 +304,6 @@ const openTrailer = () => {
 
 .shop-btn,
 .subscribe-btn {
-  min-height: 62px;
-  min-width: 240px;
   border-radius: 10px;
   font-size: 20px;
   font-weight: 700;
@@ -430,8 +426,6 @@ const openTrailer = () => {
 }
 
 .poster-image {
-  width: 916px;
-  height: 516px;
   object-fit: cover;
   filter: brightness(0.8);
   transition:
@@ -547,10 +541,10 @@ const openTrailer = () => {
   margin-bottom: 2px;
   padding-bottom: 2px;
   font-style: normal;
-  font-size: clamp(2.1rem, 5vw, 3.7rem);
+  font-size: clamp(.7rem, 6vw, 3.7rem);
   line-height: 1.05;
+  
 }
-
 @media (max-width: 1100px) {
   .callToArm {
     grid-template-columns: 1fr;
